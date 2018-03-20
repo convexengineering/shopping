@@ -33,9 +33,8 @@ class ShoppingCart(Model):
 
     def process_result(self, solution):
         S, e_S = self["S"], self["e^{S}"]
-        Sval = np.log(solution(e_S).magnitude)
-        solution["freevariables"][S] = Sval
-        solution["variables"][S] = Sval
+        solution["freevariables"][S] = np.log(solution(e_S))
+        solution["variables"][S] = np.log(solution(e_S))
 
 
 def check_values_length(dictionary, N=None):
